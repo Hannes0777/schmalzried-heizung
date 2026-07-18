@@ -1,0 +1,13 @@
+{
+  "eyebrow": "Meisterbetrieb · Rudersberg-Oberndorf · Region Backnang",
+  "headline_line1": "Ihr Fachbetrieb für",
+  "headline_em": "Heizung & Sanitär",
+  "headline_line2": "in Rudersberg.",
+  "sub": "Schnelle Hilfe bei Heizungsausfall – zuverlässige Installation, Wartung und Badsanierung aus einer Hand. Meisterbetrieb seit über 20 Jahren.",
+  "trust_badges": [
+    { "icon": "fa-solid fa-award", "text": "Meisterbetrieb" },
+    { "icon": "fa-solid fa-bolt", "text": "24h Notdienst" },
+    { "icon": "fa-solid fa-shield-halved", "text": "20+ Jahre Erfahrung" },
+    { "icon": "fa-solid fa-map-location-dot", "text": "Rudersberg · Welzheim · Backnang" }
+  ]
+}

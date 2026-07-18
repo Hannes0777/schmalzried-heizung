@@ -78,11 +78,7 @@
 
 // ── Scroll reveal ─────────────────────────────────────
 (function () {
-  // Skip animations for users who prefer reduced motion
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('reveal--visible'));
-    return;
-  }
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -93,7 +89,15 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  function observeAll() {
+    const items = document.querySelectorAll('.reveal:not(.reveal--visible)');
+    if (prefersReduced) { items.forEach(el => el.classList.add('reveal--visible')); return; }
+    items.forEach(el => obs.observe(el));
+  }
+
+  observeAll();
+  // Expose so cms-content.js can re-observe elements it renders after this runs
+  window.cmsObserveReveal = observeAll;
 })();
 
 // ── Nav active link scroll spy ───────────────────────

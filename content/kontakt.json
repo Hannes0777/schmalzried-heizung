@@ -1,0 +1,12 @@
+{
+  "telefon": "[TELEFONNUMMER]",
+  "telefon_href": "+49TELEFONNUMMER",
+  "ort": "Rudersberg-Oberndorf",
+  "bundesland": "Baden-Württemberg",
+  "buerozeiten": "Mo–Fr: 7:00–17:00 Uhr",
+  "notdienst_zeiten": "24 Stunden · 7 Tage · 365 Tage",
+  "einzugsgebiet_orte": ["Rudersberg", "Welzheim", "Backnang", "Schorndorf", "Lorch", "Alfdorf"],
+  "einzugsgebiet_suffix": "und Umgebung",
+  "map_bbox": "9.46,48.86,9.60,48.93",
+  "map_marker": "48.894,9.534"
+}

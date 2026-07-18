@@ -1,0 +1,235 @@
+# ============================================================
+#  Sveltia CMS – Konfiguration für Schmalzried Haus- und Gebäudetechnik
+#  Bearbeitet werden JSON-Dateien im Ordner /content/
+# ============================================================
+
+backend:
+  name: github
+  repo: Hannes0777/schmalzried-heizung
+  branch: main
+  # Eigener Cloudflare-Worker nur für diese Website: E-Mail/Passwort-Login,
+  # kein GitHub-Account nötig, kein Zugriff auf andere Websites möglich.
+  base_url: https://cms-auth-schmalzried-heizung.ehmann-hannes07.workers.dev
+
+media_folder: uploads
+public_folder: /uploads
+
+locale: de
+
+# ============================================================
+#  SAMMLUNGEN
+# ============================================================
+
+collections:
+
+  # ----------------------------------------------------------
+  #  LEISTUNGEN
+  # ----------------------------------------------------------
+  - name: leistungen
+    label: "🔧 Leistungen"
+    description: "Die Leistungskarten auf der Startseite. Sie können Leistungen hinzufügen, entfernen oder deren Text ändern."
+    files:
+      - name: leistungen
+        label: "Leistungen verwalten"
+        file: content/leistungen.json
+        fields:
+          - name: items
+            label: "Leistungen"
+            label_singular: "Leistung"
+            widget: list
+            summary: "{{titel}}"
+            fields:
+              - name: icon
+                label: "Icon (Font-Awesome-Klasse)"
+                widget: string
+                hint: "z.B. 'fa-solid fa-fire-flame-curved' – Icon-Namen finden Sie auf fontawesome.com/icons. Bitte nur ändern, wenn Sie sich sicher sind."
+              - name: titel
+                label: "Titel der Leistung"
+                widget: string
+              - name: text
+                label: "Beschreibungstext"
+                widget: text
+              - name: istNotdienst
+                label: "Ist dies der Notdienst-Eintrag?"
+                widget: boolean
+                default: false
+                hint: "Wenn aktiviert, verlinkt der Button direkt zur Telefonnummer (Anruf) statt zum Kontaktformular. Normalerweise nur bei der Notdienst-Karte aktivieren."
+
+  # ----------------------------------------------------------
+  #  REFERENZPROJEKTE
+  # ----------------------------------------------------------
+  - name: referenzen
+    label: "📸 Referenzprojekte"
+    description: "Die Projektkarten im Bereich 'Referenzprojekte'. Fügen Sie neue Projekte hinzu oder bearbeiten Sie bestehende."
+    files:
+      - name: referenzen
+        label: "Referenzprojekte verwalten"
+        file: content/referenzen.json
+        fields:
+          - name: items
+            label: "Projekte"
+            label_singular: "Projekt"
+            widget: list
+            summary: "{{titel}} – {{ort}} {{jahr}}"
+            fields:
+              - name: tag
+                label: "Kategorie-Label (kurz, z.B. 'Wärmepumpe')"
+                widget: string
+              - name: titel
+                label: "Projekttitel"
+                widget: string
+              - name: ort
+                label: "Ort"
+                widget: string
+              - name: jahr
+                label: "Jahr"
+                widget: string
+              - name: beschreibung
+                label: "Beschreibung"
+                widget: text
+
+  # ----------------------------------------------------------
+  #  ÜBER UNS
+  # ----------------------------------------------------------
+  - name: ueberuns
+    label: "🏛 Über uns"
+    files:
+      - name: ueberuns
+        label: "Text & Stichpunkte"
+        file: content/ueberuns.json
+        fields:
+          - name: absatz1
+            label: "Erster Absatz"
+            widget: markdown
+            hint: "**fettes Wort** für fettgedruckten Text"
+          - name: absatz2
+            label: "Zweiter Absatz"
+            widget: markdown
+          - name: features
+            label: "Häkchen-Liste (Firmenmerkmale)"
+            label_singular: "Stichpunkt"
+            widget: list
+            field:
+              name: text
+              label: "Stichpunkt"
+              widget: string
+          - name: stats
+            label: "Kennzahlen (z.B. '20+ Jahre Erfahrung')"
+            label_singular: "Kennzahl"
+            widget: list
+            summary: "{{num}} – {{label}}"
+            fields:
+              - name: num
+                label: "Zahl (z.B. 20+)"
+                widget: string
+              - name: label
+                label: "Beschriftung (z.B. Jahre Erfahrung)"
+                widget: string
+
+  # ----------------------------------------------------------
+  #  EINSTELLUNGEN (mehrteilige Dateisammlung)
+  # ----------------------------------------------------------
+  - name: einstellungen
+    label: "⚙️ Einstellungen"
+    description: "Grundlegende Angaben zur Website und zum Betrieb."
+    files:
+
+      - name: siteinfo
+        label: "Allgemeine Seiteninfos"
+        file: content/siteinfo.json
+        fields:
+          - name: title
+            label: "Seitentitel (erscheint im Browser-Tab)"
+            widget: string
+          - name: meta_description
+            label: "Kurzbeschreibung für Suchmaschinen"
+            widget: text
+            hint: "Wird von Google in den Suchergebnissen angezeigt."
+          - name: og_title
+            label: "Titel für Vorschau in sozialen Netzwerken"
+            widget: string
+            hint: "Erscheint z.B. wenn der Link bei WhatsApp oder Facebook geteilt wird."
+          - name: og_description
+            label: "Beschreibung für Vorschau in sozialen Netzwerken"
+            widget: text
+
+      - name: hero
+        label: "Startseite – Willkommensbereich"
+        file: content/hero.json
+        fields:
+          - name: eyebrow
+            label: "Kurzer Hinweistext über der Hauptüberschrift"
+            widget: string
+            hint: "z.B. 'Meisterbetrieb · Rudersberg-Oberndorf · Region Backnang'"
+          - name: headline_line1
+            label: "Hauptüberschrift – erste Zeile"
+            widget: string
+          - name: headline_em
+            label: "Hauptüberschrift – hervorgehobene Zeile (orange)"
+            widget: string
+          - name: headline_line2
+            label: "Hauptüberschrift – dritte Zeile"
+            widget: string
+          - name: sub
+            label: "Untertitel"
+            widget: text
+          - name: trust_badges
+            label: "Vertrauens-Badges (unter den Buttons)"
+            label_singular: "Badge"
+            widget: list
+            summary: "{{text}}"
+            fields:
+              - name: icon
+                label: "Icon (Font-Awesome-Klasse)"
+                widget: string
+              - name: text
+                label: "Text"
+                widget: string
+
+      - name: kontakt
+        label: "Kontakt & Adresse"
+        file: content/kontakt.json
+        fields:
+          - name: telefon
+            label: "📞 Telefonnummer (Anzeigeformat, z.B. 07183 12345)"
+            widget: string
+            hint: "WICHTIG: Diese Nummer erscheint an ALLEN Stellen der Website (Notfall-Banner oben, Startseite, Navigation, Leistungen, Kontakt, Fußzeile). Einmal hier ändern – überall sofort aktuell."
+          - name: telefon_href
+            label: "📞 Telefonnummer für Anruf-Links (z.B. +497183123456)"
+            widget: string
+            hint: "Ohne Leerzeichen, mit Ländervorwahl +49, führende 0 der Vorwahl weglassen. Wird für alle 'Jetzt anrufen'-Buttons auf der ganzen Seite verwendet."
+          - name: ort
+            label: "Ort"
+            widget: string
+          - name: bundesland
+            label: "Bundesland"
+            widget: string
+          - name: buerozeiten
+            label: "Bürozeiten"
+            widget: string
+            hint: "z.B. 'Mo–Fr: 7:00–17:00 Uhr'"
+          - name: notdienst_zeiten
+            label: "Notdienst-Erreichbarkeit"
+            widget: string
+            hint: "z.B. '24 Stunden · 7 Tage · 365 Tage'"
+          - name: einzugsgebiet_orte
+            label: "Einzugsgebiet – Orte"
+            label_singular: "Ort"
+            widget: list
+            hint: "Liste der Orte im Einzugsgebiet, erscheint im Kontaktbereich. Orte hinzufügen oder entfernen."
+            field:
+              name: ort
+              label: "Ortsname"
+              widget: string
+          - name: einzugsgebiet_suffix
+            label: "Zusatztext nach der Ortsliste"
+            widget: string
+            hint: "z.B. 'und Umgebung'"
+          - name: map_bbox
+            label: "Kartenausschnitt (bbox)"
+            widget: string
+            hint: "Nicht verändern, außer der Betrieb zieht um. Format: minLon,minLat,maxLon,maxLat"
+          - name: map_marker
+            label: "Karten-Markierung (Standort)"
+            widget: string
+            hint: "Nicht verändern, außer der Betrieb zieht um. Format: Breitengrad,Längengrad"

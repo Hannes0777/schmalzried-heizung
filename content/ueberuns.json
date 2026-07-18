@@ -1,0 +1,15 @@
+{
+  "absatz1": "Seit über 20 Jahren steht der Name Schmalzried für handwerkliche Qualität, Zuverlässigkeit und faire Preise in Rudersberg und der gesamten Region Rems-Murr. Als inhabergeführter Meisterbetrieb legen wir höchsten Wert auf sorgfältige Ausführung, termintreue Abwicklung und persönlichen Service.",
+  "absatz2": "Unser Einzugsgebiet umfasst Rudersberg, Welzheim, Backnang, Schorndorf, Lorch, Alfdorf und die gesamte Umgebung. Von der kleinen Reparatur bis zur kompletten Systemerneuerung – wir sind Ihr verlässlicher Ansprechpartner.",
+  "features": [
+    "Staatlich geprüfter Meisterbetrieb",
+    "Einzugsgebiet: Rudersberg, Welzheim, Backnang, Schorndorf, Lorch",
+    "Kostenlose Erstberatung und Angebotserstellung",
+    "24h Notdienst bei Heizungsausfall und Wasserrohrbruch",
+    "Förderberatung für Wärmepumpen und Solaranlagen (BAFA, KfW)"
+  ],
+  "stats": [
+    { "num": "20+", "label": "Jahre Erfahrung" },
+    { "num": "500+", "label": "Projekte" }
+  ]
+}

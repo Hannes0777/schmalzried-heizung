@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "icon": "fa-solid fa-fire-flame-curved",
+      "titel": "Heizungsinstallation & Wartung",
+      "text": "Einbau, Inbetriebnahme und jährliche Wartung aller Heizungsanlagen – Gas, Öl, Pellets und Wärmepumpe. Schnell, sicher, zuverlässig.",
+      "istNotdienst": false
+    },
+    {
+      "icon": "fa-solid fa-faucet-drip",
+      "titel": "Badsanierung & Sanitär",
+      "text": "Vollständige Badsanierungen, Sanitärinstallationen und Rohrverlegungen für Neubau und Bestandsgebäude nach Ihren Wünschen.",
+      "istNotdienst": false
+    },
+    {
+      "icon": "fa-solid fa-solar-panel",
+      "titel": "Wärmepumpe & Solar",
+      "text": "Zukunftssichere Heiztechnik: Planung und Installation von Wärmepumpen und thermischen Solaranlagen inkl. Förderberatung.",
+      "istNotdienst": false
+    },
+    {
+      "icon": "fa-solid fa-wind",
+      "titel": "Lüftungsanlagen",
+      "text": "Kontrollierte Wohnraumlüftung für gesundes Raumklima, Energieeffizienz und effektive Schimmelprävention in Wohn- und Geschäftsgebäuden.",
+      "istNotdienst": false
+    },
+    {
+      "icon": "fa-solid fa-bolt",
+      "titel": "24h Notdienst",
+      "text": "Heizungsausfall oder Wasserrohrbruch? Wir sind rund um die Uhr erreichbar – auch an Wochenenden und Feiertagen. Rufen Sie jetzt an.",
+      "istNotdienst": true
+    }
+  ]
+}

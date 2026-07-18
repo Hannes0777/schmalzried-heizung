@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "tag": "Wärmepumpe",
+      "titel": "Heizungstausch Einfamilienhaus",
+      "ort": "Rudersberg",
+      "jahr": "2024",
+      "beschreibung": "Kompletter Austausch der alten Gasheizung durch eine moderne Luft-Wasser-Wärmepumpe inkl. Hydraulikabgleich."
+    },
+    {
+      "tag": "Badsanierung",
+      "titel": "Badsanierung Komplett",
+      "ort": "Welzheim",
+      "jahr": "2023",
+      "beschreibung": "Vollständige Badsanierung mit neuer Dusche, Wanne, Armaturen und Fliesenarbeiten nach individuellen Kundenwünschen."
+    },
+    {
+      "tag": "Neubau",
+      "titel": "Sanitärinstallation Neubau",
+      "ort": "Backnang",
+      "jahr": "2024",
+      "beschreibung": "Komplette Heizungs- und Sanitärinstallation für ein Einfamilienhaus im Neubau – von der Planung bis zur Abnahme."
+    },
+    {
+      "tag": "Lüftung",
+      "titel": "Lüftungsanlage Mehrfamilienhaus",
+      "ort": "Rudersberg-Oberndorf",
+      "jahr": "2023",
+      "beschreibung": "Installation einer zentralen Wohnraumlüftung mit Wärmerückgewinnung in einem Mehrfamilienhaus mit 6 Wohneinheiten."
+    }
+  ]
+}
