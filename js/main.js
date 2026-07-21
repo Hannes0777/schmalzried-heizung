@@ -172,14 +172,29 @@
 
     // Submit state
     const origHTML  = submit.innerHTML;
+    const errorEl   = document.getElementById('cf-error-general');
     submit.disabled = true;
     submit.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Wird gesendet …';
+    if (errorEl) errorEl.hidden = true;
 
-    // Simulated send (replace with fetch() for real backend)
-    setTimeout(() => {
-      form.hidden    = true;
-      success.hidden = false;
-      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 900);
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    fetch('https://contact-form-schmalzried-heizung.ehmann-hannes07.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then(res => res.json().then(body => ({ ok: res.ok && body.ok, body })))
+      .then(({ ok, body }) => {
+        if (!ok) throw new Error(body?.error || 'Versand fehlgeschlagen');
+        form.hidden    = true;
+        success.hidden = false;
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(() => {
+        submit.disabled = false;
+        submit.innerHTML = origHTML;
+        if (errorEl) errorEl.hidden = false;
+      });
   });
 })();

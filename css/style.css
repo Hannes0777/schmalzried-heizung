@@ -699,7 +699,9 @@ address { font-style: normal; }
 .cf-group select:focus,
 .cf-group textarea:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(26,60,110,0.1);
+  /* Deutlich sichtbarer Fokusring (Barrierefreiheit / BFSG) statt des
+     zuvor entfernten Browser-Outlines – 3px, hoher Kontrast. */
+  box-shadow: 0 0 0 3px rgba(26,60,110,0.45);
 }
 .cf-group.has-error input,
 .cf-group.has-error select {
@@ -714,6 +716,12 @@ address { font-style: normal; }
 .cf-submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
 .cf-hint {
   font-size: 0.76rem; color: var(--color-text-light);
+  margin-top: 0.75rem; text-align: center;
+}
+.cf-error-general {
+  font-size: 0.85rem; color: #b3261e;
+  background: rgba(179,38,30,0.08); border: 1px solid rgba(179,38,30,0.3);
+  border-radius: 6px; padding: 0.6rem 0.9rem;
   margin-top: 0.75rem; text-align: center;
 }
 .cf-success {
@@ -737,6 +745,15 @@ address { font-style: normal; }
   transition: color var(--transition);
 }
 .contact-phone:hover { color: var(--color-accent); }
+
+.contact-email {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--color-text-light); margin-bottom: 1.25rem;
+  transition: color var(--transition);
+}
+.contact-email:hover { color: var(--color-primary); }
+.contact-email i { color: var(--color-primary); }
 
 .contact-hours { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.25rem; }
 .contact-hours__row {
@@ -865,4 +882,58 @@ address { font-style: normal; }
   .about-stats   { flex-direction: column; max-width: none; }
   .footer__bottom-inner { flex-direction: column; text-align: center; }
   .footer__legal-links { justify-content: center; }
+}
+
+/* ── Rechtliche Seiten (Impressum & Datenschutz) ───────── */
+.legal-hero {
+  background: var(--color-primary);
+  padding: 3rem 0 2.5rem;
+}
+.legal-hero .section__header { margin-bottom: 0; max-width: none; text-align: left; }
+.legal-hero .section__title { margin-bottom: 0; }
+.legal-hero .section__title::after { margin-left: 0; }
+
+.legal-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-top: 3rem;
+}
+.legal-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 2.5rem 0 0.85rem;
+}
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content p,
+.legal-content address,
+.legal-content li {
+  font-size: 0.975rem;
+  line-height: 1.75;
+  color: var(--color-text-light);
+  margin-bottom: 0.9rem;
+}
+.legal-content address { font-style: normal; }
+.legal-content a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+.legal-content a:hover { color: var(--color-accent); }
+.legal-content ul { margin: 0 0 0.9rem 1.25rem; list-style: disc; }
+.legal-content strong { color: var(--color-text); }
+
+/* Deutlich sichtbarer Platzhalter für fehlende Rechts-/Kontaktdaten –
+   muss dem Betreiber vor Go-Live unübersehbar auffallen. */
+.legal-placeholder {
+  display: inline-block;
+  background: #FFF3BF;
+  border: 1.5px dashed var(--color-emergency);
+  color: var(--color-emergency-dark);
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .legal-content { padding-top: 2rem; }
 }

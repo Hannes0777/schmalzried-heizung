@@ -12,10 +12,8 @@
   <meta property="og:description" content="Heizung, Sanitär, Badsanierung – schnell, zuverlässig, fair. 24h Notdienst.">
   <meta property="og:type" content="website">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts: selbst gehostet (kein Nachladen von Google-Servern, siehe css/fonts.css) -->
+  <link rel="stylesheet" href="css/fonts.css">
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -512,6 +510,7 @@
               </button>
 
               <p class="cf-hint">* Pflichtfelder. Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage verwendet.</p>
+              <p id="cf-error-general" class="cf-error-general" hidden>Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.</p>
             </form>
 
             <div id="cf-success" class="cf-success" hidden aria-live="polite">
@@ -537,6 +536,11 @@
               <a href="tel:+49TELEFONNUMMER" class="contact-phone">
                 <i class="fa-solid fa-phone" aria-hidden="true"></i>
                 [TELEFONNUMMER]
+              </a>
+
+              <a href="#" class="contact-email" id="contact-email-link" hidden>
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <span id="contact-email-text">E-Mail</span>
               </a>
 
               <div class="contact-hours">
@@ -638,8 +642,8 @@
       <div class="container footer__bottom-inner">
         <p>&copy; <span id="footer-year"></span> Haus- und Gebäudetechnik Schmalzried &ndash; Alle Rechte vorbehalten</p>
         <div class="footer__legal-links">
-          <a href="#">Impressum</a>
-          <a href="#">Datenschutz</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
         </div>
       </div>
     </div>

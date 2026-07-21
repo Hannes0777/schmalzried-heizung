@@ -104,8 +104,20 @@
     return `<div class="trust-badge"><i class="${b.icon}" aria-hidden="true"></i><span>${b.text}</span></div>`;
   }
 
+  // ── Set a legal-page field: fills the placeholder with the real
+  // value once one is entered in the CMS, and turns off the loud
+  // "legal-placeholder" highlighting since the field is no longer
+  // missing. Leaves the placeholder untouched while the value is
+  // still empty, so it stays unmissable until go-live.
+  function setLegalField(id, value) {
+    const el = document.getElementById(id);
+    if (!el || value == null || String(value).trim() === '') return;
+    el.textContent = value;
+    el.classList.remove('legal-placeholder');
+  }
+
   // ── Fetch everything in parallel ─────────────────────────
-  const [siteinfo, hero, leistungen, referenzen, ueberuns, kontakt] =
+  const [siteinfo, hero, leistungen, referenzen, ueberuns, kontakt, rechtliches] =
     await Promise.all([
       fetchJSON('content/siteinfo.json'),
       fetchJSON('content/hero.json'),
@@ -113,6 +125,7 @@
       fetchJSON('content/referenzen.json'),
       fetchJSON('content/ueberuns.json'),
       fetchJSON('content/kontakt.json'),
+      fetchJSON('content/rechtliches.json'),
     ]);
 
   // ── 1. Site meta ─────────────────────────────────────────
@@ -180,12 +193,22 @@
   if (kontakt) {
     const addr = document.querySelector('.contact-details__address');
     if (addr && kontakt.ort && kontakt.bundesland) {
-      addr.innerHTML = `${kontakt.ort}<br>${kontakt.bundesland}`;
+      const strasseLine = kontakt.strasse ? `${kontakt.strasse}<br>` : '';
+      addr.innerHTML = `${strasseLine}${kontakt.ort}<br>${kontakt.bundesland}`;
     }
 
     const footerAddr = document.querySelector('.footer__address');
     if (footerAddr && kontakt.ort && kontakt.bundesland) {
-      footerAddr.textContent = `${kontakt.ort}, ${kontakt.bundesland}`;
+      const strassePart = kontakt.strasse ? `${kontakt.strasse}, ` : '';
+      footerAddr.textContent = `${strassePart}${kontakt.ort}, ${kontakt.bundesland}`;
+    }
+
+    const emailLink = document.getElementById('contact-email-link');
+    const emailText = document.getElementById('contact-email-text');
+    if (emailLink && emailText && kontakt.email) {
+      emailLink.href = `mailto:${kontakt.email}`;
+      emailText.textContent = kontakt.email;
+      emailLink.hidden = false;
     }
 
     const buerozeitenEl = document.querySelector('.contact-hours__row:not(.contact-hours__row--emergency) span');
@@ -225,6 +248,28 @@
         });
       }
     });
+  }
+
+  // ── 7. Impressum / Datenschutz (nur falls die Felder auf der
+  // aktuellen Seite existieren – auf index.html greift das nicht) ──
+  if (kontakt) {
+    setText(document.getElementById('impressum-ort'), kontakt.ort);
+    setText(document.getElementById('impressum-bundesland'), kontakt.bundesland);
+    setText(document.getElementById('datenschutz-ort'), kontakt.ort);
+    setText(document.getElementById('datenschutz-bundesland'), kontakt.bundesland);
+    setLegalField('impressum-strasse', kontakt.strasse);
+    setLegalField('datenschutz-strasse', kontakt.strasse);
+    setLegalField('impressum-email', kontakt.email);
+    setLegalField('datenschutz-email', kontakt.email);
+  }
+
+  if (rechtliches) {
+    setLegalField('impressum-vertretung', rechtliches.vertretungsberechtigte_person);
+    setLegalField('impressum-ust', rechtliches.ust_idnr);
+    setLegalField('impressum-hr-gericht', rechtliches.handelsregister_gericht);
+    setLegalField('impressum-hr-nummer', rechtliches.handelsregister_nummer);
+    setLegalField('impressum-kammer', rechtliches.kammer);
+    setLegalField('impressum-berufsbezeichnung', rechtliches.berufsbezeichnung);
   }
 
   // ── Re-observe any newly added .reveal elements ──────────

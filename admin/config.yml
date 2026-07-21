@@ -127,6 +127,48 @@ collections:
                 widget: string
 
   # ----------------------------------------------------------
+  #  RECHTLICHES (Impressum & Datenschutz)
+  # ----------------------------------------------------------
+  - name: rechtliches
+    label: "⚖️ Rechtliches"
+    description: "Angaben für Impressum und Datenschutzerklärung, die nur Sie als Betriebsinhaber wissen können (Steuer- und Registerdaten, Kammerzugehörigkeit, vertretungsberechtigte Person). Bitte sorgfältig und wahrheitsgemäß ausfüllen – diese Angaben sind gesetzlich vorgeschrieben (§ 5 DDG). Solange ein Feld leer bleibt, zeigt die Website im Impressum einen auffälligen Platzhalter an."
+    files:
+      - name: rechtliches
+        label: "Rechtliche Angaben"
+        file: content/rechtliches.json
+        fields:
+          - name: vertretungsberechtigte_person
+            label: "Vertretungsberechtigte Person"
+            widget: string
+            required: false
+            hint: "Name des Inhabers / der Inhaberin bzw. der Geschäftsführung. Erscheint im Impressum unter 'Vertreten durch'."
+          - name: ust_idnr
+            label: "Umsatzsteuer-Identifikationsnummer"
+            widget: string
+            required: false
+            hint: "Format z.B. 'DE123456789'. Falls vorhanden – sonst leer lassen, dann bleibt im Impressum ein deutlicher Platzhalter sichtbar."
+          - name: handelsregister_gericht
+            label: "Registergericht"
+            widget: string
+            required: false
+            hint: "Nur falls im Handelsregister eingetragen, z.B. 'Amtsgericht Stuttgart'. Die meisten Einzelunternehmen/Handwerksbetriebe sind NICHT eingetragen – dann leer lassen."
+          - name: handelsregister_nummer
+            label: "Handelsregisternummer"
+            widget: string
+            required: false
+            hint: "z.B. 'HRB 123456'. Nur ausfüllen, wenn auch ein Registergericht eingetragen ist."
+          - name: kammer
+            label: "Zuständige Handwerkskammer"
+            widget: string
+            required: false
+            hint: "z.B. 'Handwerkskammer Region Stuttgart'. Pflichtangabe im Impressum für Handwerksbetriebe."
+          - name: berufsbezeichnung
+            label: "Berufsbezeichnung / Meistertitel"
+            widget: string
+            required: false
+            hint: "z.B. 'Installateur- und Heizungsbauermeister'. Wird im Impressum als verliehene Berufsbezeichnung genannt."
+
+  # ----------------------------------------------------------
   #  EINSTELLUNGEN (mehrteilige Dateisammlung)
   # ----------------------------------------------------------
   - name: einstellungen
@@ -198,6 +240,15 @@ collections:
             label: "📞 Telefonnummer für Anruf-Links (z.B. +497183123456)"
             widget: string
             hint: "Ohne Leerzeichen, mit Ländervorwahl +49, führende 0 der Vorwahl weglassen. Wird für alle 'Jetzt anrufen'-Buttons auf der ganzen Seite verwendet."
+          - name: email
+            label: "📧 E-Mail-Adresse"
+            widget: string
+            required: false
+            hint: "Erscheint im Kontaktbereich, im Impressum und in der Datenschutzerklärung."
+          - name: strasse
+            label: "Straße & Hausnummer"
+            widget: string
+            required: false
           - name: ort
             label: "Ort"
             widget: string

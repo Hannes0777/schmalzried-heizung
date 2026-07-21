@@ -62,6 +62,20 @@ hinterlegt) – das lässt sich bei Bedarf später leicht ergänzen.
 5. → Die Website baut & veröffentlicht sich in ca. 1–2 Minuten neu
 ```
 
+## Kontaktformular (Angebotsanfrage)
+
+Das Formular verschickt echte E-Mails über einen eigenen Cloudflare-Worker
+(`contact-form-schmalzried-heizung`) + [Resend](https://resend.com).
+
+> ⚠️ **Vor Übergabe an den echten Kunden unbedingt ändern:** Anfragen landen
+> aktuell testweise bei `ehmann.hannes07@gmail.com`, nicht beim Betrieb.
+> Sobald die echte E-Mail-Adresse des Betriebs feststeht:
+> ```bash
+> cd contact-form-workers/schmalzried-heizung
+> echo -n "info@..." | npx wrangler secret put TO_EMAIL
+> ```
+> Details (Absenderadresse/Domain-Verifizierung) siehe `contact-form-workers/README.md`.
+
 ## Troubleshooting
 
 | Problem | Lösung |

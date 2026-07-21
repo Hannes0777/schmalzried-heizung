@@ -1,7 +1,9 @@
 {
-  "telefon": "[TELEFONNUMMER]",
-  "telefon_href": "+49TELEFONNUMMER",
-  "ort": "Rudersberg-Oberndorf",
+  "telefon": "(07183) 7176",
+  "telefon_href": "+4971837176",
+  "strasse": "Vogelsangstr. 18",
+  "ort": "73635 Rudersberg-Oberndorf",
+  "email": "",
   "bundesland": "Baden-Württemberg",
   "buerozeiten": "Mo–Fr: 7:00–17:00 Uhr",
   "notdienst_zeiten": "24 Stunden · 7 Tage · 365 Tage",
