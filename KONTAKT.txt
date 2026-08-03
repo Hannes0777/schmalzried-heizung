@@ -1,0 +1,4 @@
+Kontaktdaten – Schmalzried Haustechnik (Heizung & Sanitär)
+
+Telefon: (07183) 7176
+E-Mail: noch nicht hinterlegt (content/kontakt.json → "email": "" — beim Kunden nachfragen und im CMS ergänzen)
