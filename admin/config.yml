@@ -284,11 +284,19 @@ collections:
             label: "Zusatztext nach der Ortsliste"
             widget: string
             hint: "z.B. 'und Umgebung'"
-          - name: map_bbox
-            label: "Kartenausschnitt (bbox)"
+          - name: map_embed_url
+            label: "Google-Maps Einbettungs-URL"
             widget: string
-            hint: "Nicht verändern, außer der Betrieb zieht um. Format: minLon,minLat,maxLon,maxLat"
-          - name: map_marker
-            label: "Karten-Markierung (Standort)"
+            hint: "Nicht verändern, außer der Betrieb zieht um."
+          - name: map_link_url
+            label: "Google-Maps Navigations-URL"
             widget: string
-            hint: "Nicht verändern, außer der Betrieb zieht um. Format: Breitengrad,Längengrad"
+            hint: "Wird für den Link 'In Google Maps öffnen' verwendet. Nicht verändern, außer der Betrieb zieht um."
+          - name: geo_lat
+            label: "Breitengrad (für Google-Suche/Karten)"
+            widget: number
+            hint: "Nicht verändern, außer der Betrieb zieht um."
+          - name: geo_lng
+            label: "Längengrad (für Google-Suche/Karten)"
+            widget: number
+            hint: "Nicht verändern, außer der Betrieb zieht um."

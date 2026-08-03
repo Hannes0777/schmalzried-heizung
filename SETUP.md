@@ -76,6 +76,21 @@ Das Formular verschickt echte E-Mails über einen eigenen Cloudflare-Worker
 > ```
 > Details (Absenderadresse/Domain-Verifizierung) siehe `contact-form-workers/README.md`.
 
+## SEO: Domain-Platzhalter
+
+Canonical-Links, `sitemap.xml`, `robots.txt` und die strukturierten Daten
+(JSON-LD) auf `index.html`) verwenden aktuell den Platzhalter
+`https://schmalzried-heizung.pages.dev/`, da die endgültige Domain noch nicht
+feststeht. Sobald eine echte Domain verbunden ist, dort überall ersetzen:
+
+```
+index.html        (canonical + JSON-LD "url"/"image")
+impressum.html     (canonical)
+datenschutz.html   (canonical)
+sitemap.xml        (alle <loc>-Einträge)
+robots.txt         (Sitemap-Zeile)
+```
+
 ## Troubleshooting
 
 | Problem | Lösung |

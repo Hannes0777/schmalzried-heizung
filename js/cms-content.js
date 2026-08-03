@@ -226,8 +226,33 @@
     }
 
     const iframe = document.querySelector('.contact-map iframe');
-    if (iframe && kontakt.map_bbox && kontakt.map_marker) {
-      iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${kontakt.map_bbox}&layer=mapnik&marker=${kontakt.map_marker}`;
+    if (iframe && kontakt.map_embed_url) iframe.src = kontakt.map_embed_url;
+
+    const mapLink = document.querySelector('.contact-map__link');
+    if (mapLink && kontakt.map_link_url) mapLink.href = kontakt.map_link_url;
+
+    // ── Keep the LocalBusiness structured data in sync with the
+    // same address/phone/geo shown on the page, so it never contradicts
+    // the visible content (only present on index.html).
+    const ldScript = document.getElementById('ld-localbusiness');
+    if (ldScript) {
+      try {
+        const ld = JSON.parse(ldScript.textContent);
+        if (kontakt.telefon_href) ld.telephone = kontakt.telefon_href.startsWith('+') ? kontakt.telefon_href : `+${kontakt.telefon_href}`;
+        if (kontakt.strasse) ld.address.streetAddress = kontakt.strasse;
+        if (kontakt.bundesland) ld.address.addressRegion = kontakt.bundesland;
+        const ortMatch = kontakt.ort?.match(/^(\d{5})\s+(.+)/);
+        if (ortMatch) {
+          ld.address.postalCode = ortMatch[1];
+          ld.address.addressLocality = ortMatch[2];
+        }
+        if (typeof kontakt.geo_lat === 'number') ld.geo.latitude = kontakt.geo_lat;
+        if (typeof kontakt.geo_lng === 'number') ld.geo.longitude = kontakt.geo_lng;
+        if (kontakt.einzugsgebiet_orte?.length) ld.areaServed = kontakt.einzugsgebiet_orte;
+        ldScript.textContent = JSON.stringify(ld);
+      } catch (e) {
+        console.warn('[CMS] Could not sync structured data', e.message);
+      }
     }
 
     // ── Fix the phone number EVERYWHERE it appears on the page ──

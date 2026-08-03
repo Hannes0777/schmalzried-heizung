@@ -777,8 +777,14 @@ address { font-style: normal; }
 
 .contact-map { overflow: hidden; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
 .contact-map iframe { border: none; display: block; }
-.contact-map__credit { font-size: 0.72rem; color: var(--color-text-light); padding: 0.5rem; background: var(--color-off-white); }
-.contact-map__credit a { color: var(--color-primary); }
+.contact-map__link {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; font-weight: 600; color: var(--color-primary);
+  padding: 0.65rem 0.85rem; background: var(--color-off-white);
+  text-decoration: none;
+}
+.contact-map__link i { color: var(--color-accent); }
+.contact-map__link:hover { color: var(--color-accent); }
 
 /* ── Footer ────────────────────────────────────────── */
 .site-footer {

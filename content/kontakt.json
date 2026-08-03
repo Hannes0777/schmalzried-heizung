@@ -9,6 +9,8 @@
   "notdienst_zeiten": "24 Stunden · 7 Tage · 365 Tage",
   "einzugsgebiet_orte": ["Rudersberg", "Welzheim", "Backnang", "Schorndorf", "Lorch", "Alfdorf"],
   "einzugsgebiet_suffix": "und Umgebung",
-  "map_bbox": "9.46,48.86,9.60,48.93",
-  "map_marker": "48.894,9.534"
+  "map_embed_url": "https://www.google.com/maps?q=Vogelsangstr.+18%2C+73635+Rudersberg-Oberndorf&output=embed&hl=de",
+  "map_link_url": "https://maps.google.com/?q=Vogelsangstr.+18+73635+Rudersberg-Oberndorf",
+  "geo_lat": 48.894,
+  "geo_lng": 9.534
 }
